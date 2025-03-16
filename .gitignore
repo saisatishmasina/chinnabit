@@ -2,4 +2,4 @@
 database.py
 .env
 .env.local
-node_modules/
+Frontend/node_modules/
