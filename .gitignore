@@ -1,22 +1,35 @@
 # dependencies
 node_modules/
-Frontend/node_modules/
 */node_modules/
 **/node_modules/
+/node_modules
 
 # next.js
 .next/
-Frontend/.next/
 */.next/
 **/.next/
+/.next
 
 # Python virtual environment
 venv/
 __pycache__/
 *.py[cod]
+*.so
+.Python
 
 # Environment variables
 .env
+.env.*
 .env.local
+.env.*.local
+
+# Database
 *.db
 *.sqlite
+*.sqlite3
+
+# Editor directories and files
+.idea
+.vscode
+*.swp
+*.swo
