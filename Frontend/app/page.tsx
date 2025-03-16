@@ -48,7 +48,7 @@ export default function Home() {
           )}
         </div>
       ) : (
-        <div className="text-center p-8 bg-gray-50 rounded-lg shadow-sm">
+        <div className="text-center p-8 bg-gray-50 rounded-lg shadow-sm flex flex-col items-center justify-center">
           <h2 className="text-xl font-semibold mb-4">Sign in to Create Short URLs</h2>
           <p className="text-gray-600 mb-6">
             Create an account or sign in to start shortening your URLs
