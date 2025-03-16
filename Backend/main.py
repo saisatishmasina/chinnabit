@@ -1,16 +1,32 @@
-from fastapi import FastAPI, HTTPException, Depends
+from fastapi import FastAPI, HTTPException, Depends, Request
 from sqlalchemy.orm import Session
 from database import engine, Base, get_db
 from models import URLShortener
 from schemas import URLCreate, URLResponse
 import crud
 from fastapi.responses import RedirectResponse
+from fastapi.middleware.cors import CORSMiddleware
 
-# Create database tables if they don’t exist
+# Create database tables if they don't exist
 Base.metadata.create_all(bind=engine)
 
 # Initialize FastAPI app
 app = FastAPI()
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins for development
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all methods
+    allow_headers=["*"],  # Allow all headers
+)
+
+# Add exception handler
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    print(f"Global exception: {exc}")
+    return {"detail": str(exc)}
 
 @app.get("/")
 def home():

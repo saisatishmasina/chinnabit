@@ -1,0 +1,4 @@
+# Ignore database config files
+database.py
+.env
+.env.local

@@ -7,9 +7,9 @@ class URLCreate(BaseModel):
 
 # Response schema
 class URLResponse(BaseModel):
-    id: int
     short_url: str
     original_url: str
 
     class Config:
-        from_attributes = True  # Enables ORM support
+        orm_mode = True  # For pydantic v1 compatibility
+        from_attributes = True  # Enables ORM support for pydantic v2
