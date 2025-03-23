@@ -2,7 +2,7 @@
 
 A full-stack URL shortener application with FastAPI backend and Next.js frontend with Google authentication.
 
-Visit: [https://cibit.duckdns.org/]](https://cibit.duckdns.org/)
+Visit: [https://cibit.duckdns.org/]]
 ## Features
 
 - URL shortening service
