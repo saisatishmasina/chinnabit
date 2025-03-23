@@ -32,6 +32,9 @@ export default function URLShortener({ onShorten }: URLShortenerProps) {
     setIsLoading(true)
 
     try {
+      console.log("Submitting URL for shortening:", originalUrl);
+      
+      // Using API route to proxy the request
       const response = await fetch('/api/shorten', {
         method: 'POST',
         headers: {
@@ -40,21 +43,25 @@ export default function URLShortener({ onShorten }: URLShortenerProps) {
         body: JSON.stringify({
           original_url: originalUrl
         }),
-      })
+      });
       
-      const data = await response.json()
+      console.log("API response status:", response.status);
+      const data = await response.json();
+      console.log("API response data:", data);
       
       if (response.ok && data.short_url) {
-        onShorten(data.short_url)
-        setOriginalUrl('')
+        console.log("Successfully shortened URL:", data.short_url);
+        onShorten(data.short_url);
+        setOriginalUrl('');
       } else {
-        setError(data.error || 'Failed to create short URL')
+        console.error("Error response:", data);
+        setError(data.error || 'Failed to create short URL');
       }
-    } catch (err) {
-      console.error('Error shortening URL:', err)
-      setError('Failed to create short URL')
+    } catch (err: any) {
+      console.error('Error shortening URL:', err);
+      setError(`Failed to create short URL: ${err.message || 'Unknown error'}`);
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
   }
 

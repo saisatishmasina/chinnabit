@@ -30,13 +30,13 @@ export default function Home() {
               <div className="flex items-center gap-2">
                 <input
                   type="text"
-                  value={shortUrl}
+                  value={`http://cibit.duckdns.org/${shortUrl}`}
                   readOnly
                   className="input-field text-sm bg-white"
                 />
                 <button
                   onClick={() => {
-                    navigator.clipboard.writeText(shortUrl)
+                    navigator.clipboard.writeText(`http://cibit.duckdns.org/${shortUrl}`)
                     alert('Copied to clipboard!')
                   }}
                   className="btn-secondary text-sm"
